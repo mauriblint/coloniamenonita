@@ -36,9 +36,7 @@ Encontrado y limpiado:
 - Temas falsos con webshells: `custom_functions_1748854027` (`lndex.php`), `post_1751655764`, `error-404-1757857910` (`4O4.php`).
 - `xmlrpc.php` bloqueado en `.htaccess`.
 
-Backups y cuarentena en server-1:
-- Backup pre-limpieza: `/root/backups/coloniamenonita-2026-10-11/` (`files.tgz`, `db.sql.gz`)
-- Archivos maliciosos movidos a: `/root/quarantine/coloniamenonita-2026-10-11/`
+Backups y cuarentena: **borrados el 2026-10-11** por decisión de Mauricio (no queda copia del WordPress).
 
 Pendientes de seguridad:
 - Cambiar contraseña del usuario `admin` de WP, la de MySQL del sitio y las salts (el atacante pudo leer `wp-config.php`).
