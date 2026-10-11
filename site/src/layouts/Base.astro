@@ -1,0 +1,81 @@
+---
+import '@fontsource/oswald/latin-500.css';
+import '@fontsource-variable/newsreader/opsz.css';
+import '@fontsource-variable/newsreader/opsz-italic.css';
+import '../styles/global.css';
+import { Image } from 'astro:assets';
+import logo from '../assets/logo.png';
+import hero from '../assets/hero.jpg';
+import { getImage } from 'astro:assets';
+
+interface Props {
+  title: string;
+  description: string;
+  image?: ImageMetadata;
+  type?: 'website' | 'article';
+  jsonLd?: object | object[];
+  noindex?: boolean;
+}
+
+const { title, description, image, type = 'website', jsonLd, noindex = false } = Astro.props;
+const SITE_NAME = 'Colonia Menonita Guatraché';
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const og = await getImage({ src: image ?? hero, width: 1200, format: 'jpg' });
+const ogUrl = new URL(og.src, Astro.site);
+const path = Astro.url.pathname;
+const nav = [
+  { href: '/#historia', label: 'Historia' },
+  { href: '/#costumbres', label: 'Costumbres' },
+  { href: '/como-visitar-la-colonia-menonita/', label: 'Cómo visitar' },
+  { href: '/videos/', label: 'Videos' },
+  { href: '/fotos/', label: 'Fotos' },
+];
+const ld = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
+---
+<!doctype html>
+<html lang="es-AR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    {noindex && <meta name="robots" content="noindex" />}
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <meta name="theme-color" content="#ffcc0d" />
+    <meta property="og:type" content={type} />
+    <meta property="og:locale" content="es_AR" />
+    <meta property="og:site_name" content={SITE_NAME} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogUrl} />
+    <meta name="twitter:card" content="summary_large_image" />
+    {ld.map((d) => <script type="application/ld+json" set:html={JSON.stringify(d)} />)}
+  </head>
+  <body>
+    <a class="skip" href="#contenido">Ir al contenido</a>
+    <header class="site">
+      <div class="col">
+        <a class="logo" href="/" aria-label="Colonia Menonita Guatraché, inicio">
+          <Image src={logo} alt="Colonia Menonita Guatraché" width={150} loading="eager" />
+        </a>
+        <nav class="main" aria-label="Principal">
+          {nav.map((n) => <a href={n.href} aria-current={path === n.href ? 'page' : undefined}>{n.label}</a>)}
+        </nav>
+      </div>
+    </header>
+    <main id="contenido" class="col">
+      <slot />
+    </main>
+    <footer class="site">
+      <div class="col">
+        <p class="small">Colonia Menonita Nueva Esperanza · Guatraché, La Pampa, Argentina</p>
+        <p class="small">
+          {nav.map((n, i) => <>{i > 0 && ' · '}<a href={n.href}>{n.label}</a></>)}
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>

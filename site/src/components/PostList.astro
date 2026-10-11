@@ -1,0 +1,25 @@
+---
+import { Image } from 'astro:assets';
+import type { CollectionEntry } from 'astro:content';
+import { TOPICS } from '../data/topics';
+
+interface Props {
+  posts: CollectionEntry<'articulos'>[];
+  showTopic?: boolean;
+}
+const { posts, showTopic = false } = Astro.props;
+---
+<ul class="posts">
+  {posts.map((p) => (
+    <li>
+      {p.data.cover
+        ? <Image src={p.data.cover} alt="" width={264} height={198} fit="cover" />
+        : <span class="noimg" aria-hidden="true"></span>}
+      <div>
+        {showTopic && <span class="cat">{TOPICS[p.data.topic].label}</span>}
+        <h3><a href={`/${p.id}/`}>{p.data.title}</a></h3>
+        <p class="small">{p.data.description}</p>
+      </div>
+    </li>
+  ))}
+</ul>

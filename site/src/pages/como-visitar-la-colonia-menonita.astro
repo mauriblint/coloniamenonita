@@ -1,0 +1,91 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import cover from '../assets/img/2015/11/07.jpg';
+
+const MAPS = 'https://www.google.com/maps/search/?api=1&query=Colonia+Menonita+Nueva+Esperanza+Guatrach%C3%A9+La+Pampa';
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'TouristAttraction',
+    name: 'Colonia Menonita Nueva Esperanza',
+    url: 'https://coloniamenonita.com/como-visitar-la-colonia-menonita/',
+    isAccessibleForFree: true,
+    publicAccess: true,
+    address: { '@type': 'PostalAddress', addressLocality: 'Guatraché', addressRegion: 'La Pampa', addressCountry: 'AR' },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Inicio', item: 'https://coloniamenonita.com/' },
+      { '@type': 'ListItem', position: 2, name: 'Cómo visitar la Colonia Menonita', item: 'https://coloniamenonita.com/como-visitar-la-colonia-menonita/' },
+    ],
+  },
+];
+---
+<Base
+  title="Cómo llegar y visitar la Colonia Menonita de Guatraché, La Pampa"
+  description="Cómo llegar a la Colonia Menonita de Guatraché: está a 35 km del pueblo, se visita todos los días sin reserva y los domingos no se trabaja. Dónde dormir."
+  image={cover}
+  jsonLd={jsonLd}
+>
+  <article style="display:grid;gap:32px">
+    <div class="article-head">
+      <nav class="crumbs" aria-label="Ruta"><ol><li><a href="/">Inicio</a></li></ol></nav>
+      <h1>Cómo visitar la Colonia Menonita</h1>
+      <p class="lead">
+        La Colonia Menonita Nueva Esperanza está a 35 km de Guatraché, La Pampa. Se puede visitar todos los días del año
+        sin avisar ni reservar, pero para conocer los talleres y a las familias conviene ir de lunes a sábado.
+      </p>
+    </div>
+    <figure class="cover">
+      <Image src={cover} alt="Colonia Menonita Nueva Esperanza, Guatraché" widths={[400, 720, 1024]} sizes="(max-width: 760px) 100vw, 680px" loading="eager" />
+    </figure>
+    <div class="prose">
+      <h2>Cómo llegar</h2>
+      <p>
+        La colonia está a 35 km de Guatraché, cabecera del departamento homónimo en el sudeste de La Pampa. Guatraché
+        queda a 171 km de Santa Rosa y a 693 km de Buenos Aires, y se llega por las rutas provinciales RP 1 y RP 24.
+      </p>
+      <p><a href={MAPS} rel="noopener">Ver la ubicación en Google Maps →</a></p>
+
+      <h2>Cuándo ir</h2>
+      <p>
+        La colonia se puede visitar todos los días del año. Por motivos religiosos, los domingos no se trabaja ni se
+        recibe gente, aunque se puede recorrer sin problema. De lunes a sábado se pueden visitar las metalúrgicas,
+        carpinterías, queserías y tambos, ver las iglesias y escuelas, y hablar con los habitantes.
+      </p>
+      <p>
+        Lo ideal es pasar el día completo y empezar temprano, porque en la colonia se trabaja hasta que se pone el sol.
+        Algunas familias ofrecen un almuerzo típico dentro de su casa.
+      </p>
+      <p>
+        <strong>No hace falta avisar con anticipación ni hacer reserva.</strong> Son 10.000 hectáreas que se recorren
+        libremente.
+      </p>
+
+      <p>
+        Respetá su modo de vida: sé discreto con las fotos y pedí permiso antes de fotografiar a alguien.
+      </p>
+
+      <h2>Dónde dormir</h2>
+      <p>
+        Dentro de la colonia no hay hoteles ni hospedajes. Lo habitual es alojarse en Guatraché y hacer los 35 km en
+        auto propio o en los taxis que viajan a diario a la colonia.
+      </p>
+      <p>
+        En Guatraché está el Residencial “La Chacra” (Roca y Avellaneda), teléfono (02923) 15 409452.
+      </p>
+    </div>
+  </article>
+  <div class="next">
+    <h2>Antes de ir</h2>
+    <ul class="guide">
+      <li><a href="/cultura-menonita/">Introducción a la cultura menonita</a><span class="small">Creencias, dialecto y por qué no manejan autos.</span></li>
+      <li><a href="/costumbres-menonitas/">Costumbres típicas de los menonitas</a><span class="small">Bautismo, bodas, Navidad y funerales.</span></li>
+      <li><a href="/relato-de-un-viajero-en-la-colonia/">Relato de un viajero en la Colonia</a><span class="small">Cómo es recorrer la colonia, contado por un visitante.</span></li>
+    </ul>
+  </div>
+</Base>

@@ -1,0 +1,91 @@
+# Generado para Cloudflare Pages. Ver MIGRACION.md.
+# Spam del malware (/view/, /reviews/, /cp/...) NO se redirige: responde 404.
+
+# Posts viejos: /<categoria>/<slug>/<ID>/ (WordPress aceptaba cualquier categoría y slug)
+/:cat/:slug/15/ /historia-de-los-menonitas/ 301
+/:cat/:slug/15 /historia-de-los-menonitas/ 301
+/:cat/:slug/35/ /historia-de-los-menonitas/ 301
+/:cat/:slug/35 /historia-de-los-menonitas/ 301
+/:cat/:slug/18/ /antecedentes-historicos-menonitas/ 301
+/:cat/:slug/18 /antecedentes-historicos-menonitas/ 301
+/:cat/:slug/32/ /historia-colonia-nueva-esperanza/ 301
+/:cat/:slug/32 /historia-colonia-nueva-esperanza/ 301
+/:cat/:slug/169/ /colonia-menonita-guatrache/ 301
+/:cat/:slug/169 /colonia-menonita-guatrache/ 301
+/:cat/:slug/455/ /menonitas-del-imperio-ruso-a-la-pampa/ 301
+/:cat/:slug/455 /menonitas-del-imperio-ruso-a-la-pampa/ 301
+/:cat/:slug/93/ /exodo-de-los-menonitas/ 301
+/:cat/:slug/93 /exodo-de-los-menonitas/ 301
+/:cat/:slug/69/ /costumbres-menonitas/ 301
+/:cat/:slug/69 /costumbres-menonitas/ 301
+/:cat/:slug/71/ /vestimenta-menonita/ 301
+/:cat/:slug/71 /vestimenta-menonita/ 301
+/:cat/:slug/73/ /casas-menonitas/ 301
+/:cat/:slug/73 /casas-menonitas/ 301
+/:cat/:slug/63/ /comida-menonita/ 301
+/:cat/:slug/63 /comida-menonita/ 301
+/:cat/:slug/65/ /educacion-menonita/ 301
+/:cat/:slug/65 /educacion-menonita/ 301
+/:cat/:slug/60/ /agricultura-menonita/ 301
+/:cat/:slug/60 /agricultura-menonita/ 301
+/:cat/:slug/67/ /rito-de-fallecimiento-menonita/ 301
+/:cat/:slug/67 /rito-de-fallecimiento-menonita/ 301
+/:cat/:slug/421/ /cultura-menonita/ 301
+/:cat/:slug/421 /cultura-menonita/ 301
+/:cat/:slug/109/ /menonitas-un-estilo-de-vida/ 301
+/:cat/:slug/109 /menonitas-un-estilo-de-vida/ 301
+/:cat/:slug/425/ /menonitas-un-pueblo-detenido-en-el-tiempo/ 301
+/:cat/:slug/425 /menonitas-un-pueblo-detenido-en-el-tiempo/ 301
+/:cat/:slug/430/ /relato-de-un-viajero-en-la-colonia/ 301
+/:cat/:slug/430 /relato-de-un-viajero-en-la-colonia/ 301
+/:cat/:slug/464/ /colonia-menonita-experiencia-increible/ 301
+/:cat/:slug/464 /colonia-menonita-experiencia-increible/ 301
+/:cat/:slug/481/ /colonia-menonita-experiencia-increible/ 301
+/:cat/:slug/481 /colonia-menonita-experiencia-increible/ 301
+/:cat/:slug/42/ /videos/ 301
+/:cat/:slug/42 /videos/ 301
+/:cat/:slug/47/ /videos/ 301
+/:cat/:slug/47 /videos/ 301
+/:cat/:slug/49/ /videos/ 301
+/:cat/:slug/49 /videos/ 301
+/:cat/:slug/53/ /videos/ 301
+/:cat/:slug/53 /videos/ 301
+/:cat/:slug/56/ /videos/ 301
+/:cat/:slug/56 /videos/ 301
+/:cat/:slug/58/ /videos/ 301
+/:cat/:slug/58 /videos/ 301
+/:cat/:slug/116/ /videos/ 301
+/:cat/:slug/116 /videos/ 301
+/:cat/:slug/320/ /videos/ 301
+/:cat/:slug/320 /videos/ 301
+/:cat/:slug/346/ /fotos/ 301
+/:cat/:slug/346 /fotos/ 301
+/:cat/:slug/375/ /fotos/ 301
+/:cat/:slug/375 /fotos/ 301
+/:cat/:slug/416/ / 301
+/:cat/:slug/416 / 301
+
+# Categorías y redirects que ya existían
+/historia-menonitas-argentina/ /#historia 301
+/historia-menonitas-argentina /#historia 301
+/costumbres-colonia-menonita/ /#costumbres 301
+/costumbres-colonia-menonita /#costumbres 301
+/mas-informacion-sobre-los-menonitas-argentina/ /#cultura 301
+/mas-informacion-sobre-los-menonitas-argentina /#cultura 301
+/relatos-de-viajeros/ /colonia-menonita-experiencia-increible/ 301
+/relatos-de-viajeros /colonia-menonita-experiencia-increible/ 301
+/videos-colonia-menonita/ /videos/ 301
+/videos-colonia-menonita /videos/ 301
+/imagenes-colonia-menonita/ /fotos/ 301
+/imagenes-colonia-menonita /fotos/ 301
+/ubicacion/ /como-visitar-la-colonia-menonita/ 301
+/ubicacion /como-visitar-la-colonia-menonita/ 301
+/nueva-ubicacion/ /como-visitar-la-colonia-menonita/ 301
+/nueva-ubicacion /como-visitar-la-colonia-menonita/ 301
+/como-visitar-la-colonia-menonita /como-visitar-la-colonia-menonita/ 301
+
+# Paginación y feeds de WordPress
+/page/* / 301
+/feed/ / 301
+/feed / 301
+/comments/feed/ / 301

@@ -1,0 +1,52 @@
+---
+import Base from '../layouts/Base.astro';
+import videos from '../data/videos.json';
+
+const jsonLd = videos.map((v) => ({
+  '@context': 'https://schema.org',
+  '@type': 'VideoObject',
+  name: v.title,
+  description: v.text,
+  thumbnailUrl: `https://i.ytimg.com/vi/${v.id}/hqdefault.jpg`,
+  embedUrl: `https://www.youtube-nocookie.com/embed/${v.id}`,
+  contentUrl: `https://www.youtube.com/watch?v=${v.id}`,
+  uploadDate: '2012-06-04',
+}));
+---
+<Base
+  title="Videos de la Colonia Menonita de Guatraché | Documentales e informes"
+  description="Documentales e informes de TV sobre la Colonia Menonita Nueva Esperanza de Guatraché, La Pampa: Visión Siete, CQC, TN y el corto “Nueva Esperanza”."
+  jsonLd={jsonLd}
+>
+  <div class="article-head">
+    <nav class="crumbs" aria-label="Ruta"><ol><li><a href="/">Inicio</a></li></ol></nav>
+    <h1>Videos de la Colonia Menonita</h1>
+    <p class="lead">Documentales, informes de televisión y videos de visitantes sobre la Colonia Nueva Esperanza, en Guatraché.</p>
+  </div>
+  <div class="videos">
+    {videos.map((v) => (
+      <section class="video" aria-labelledby={`v-${v.id}`}>
+        <button class="yt" type="button" data-id={v.id} aria-label={`Reproducir: ${v.title}`}>
+          <img src={`https://i.ytimg.com/vi/${v.id}/hqdefault.jpg`} alt="" loading="lazy" width="480" height="360" />
+          <span class="play" aria-hidden="true"></span>
+        </button>
+        <h2 id={`v-${v.id}`} style="font-size:21px">{v.title}</h2>
+        <p class="small">{v.author}</p>
+        <p>{v.text}</p>
+      </section>
+    ))}
+  </div>
+  <script>
+    // Carga el reproductor de YouTube recién al hacer clic (la página queda liviana)
+    document.querySelectorAll<HTMLButtonElement>('.yt').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const iframe = document.createElement('iframe');
+        iframe.src = `https://www.youtube-nocookie.com/embed/${btn.dataset.id}?autoplay=1`;
+        iframe.title = btn.getAttribute('aria-label') ?? 'Video';
+        iframe.allow = 'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture';
+        iframe.allowFullscreen = true;
+        btn.replaceChildren(iframe);
+      }, { once: true });
+    });
+  </script>
+</Base>

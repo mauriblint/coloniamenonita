@@ -1,0 +1,10 @@
+# Dependencias y builds
+node_modules/
+site/dist/
+site/.astro/
+
+# Export de WordPress (DB + uploads) y datos de Search Console: quedan solo en local
+_export/
+search_console/
+
+.DS_Store

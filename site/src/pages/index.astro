@@ -1,0 +1,135 @@
+---
+import { Image } from 'astro:assets';
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import PostList from '../components/PostList.astro';
+import hero from '../assets/hero.jpg';
+import { TOPICS, byOrder, type Topic } from '../data/topics';
+
+const posts = (await getCollection('articulos')).sort(byOrder);
+const topics = Object.keys(TOPICS) as Topic[];
+
+const faq = [
+  {
+    q: '¿Dónde queda la Colonia Menonita?',
+    a: 'En la Estancia Remecó, zona rural de Guatraché, en el sudeste de La Pampa. Está a 35 km del pueblo de Guatraché, que a su vez queda a 171 km de Santa Rosa y a 693 km de Buenos Aires.',
+  },
+  {
+    q: '¿Hay que reservar para visitarla?',
+    a: 'No. La colonia se puede recorrer libremente cualquier día del año, sin avisar. Para ver los talleres y hablar con las familias conviene ir de lunes a sábado.',
+  },
+  {
+    q: '¿Se puede ir un domingo?',
+    a: 'Se puede recorrer la colonia, pero los domingos no se trabaja ni se recibe gente por motivos religiosos.',
+  },
+  {
+    q: '¿Dónde dormir?',
+    a: 'Dentro de la colonia no hay hoteles. Lo habitual es alojarse en Guatraché y viajar los 35 km en auto o en los taxis que hacen el recorrido a diario.',
+  },
+  {
+    q: '¿Por qué los menonitas no usan autos?',
+    a: 'Sus creencias no les permiten manejar vehículos más rápidos que un caballo. Dentro de la colonia se trasladan en carros tirados por caballos; para viajes largos pueden usar colectivos, remises o aviones si maneja otra persona.',
+  },
+  {
+    q: '¿Qué idioma hablan?',
+    a: 'Un dialecto que mezcla holandés y alemán, heredado de sus antepasados. Es difícil de entender incluso para quien habla alemán.',
+  },
+];
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'Colonia Menonita Guatraché',
+    url: 'https://coloniamenonita.com/',
+    inLanguage: 'es-AR',
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'TouristAttraction',
+    name: 'Colonia Menonita Nueva Esperanza',
+    description: 'Comunidad menonita fundada en 1985 en la Estancia Remecó, a 35 km de Guatraché, La Pampa.',
+    url: 'https://coloniamenonita.com/',
+    isAccessibleForFree: true,
+    publicAccess: true,
+    address: { '@type': 'PostalAddress', addressLocality: 'Guatraché', addressRegion: 'La Pampa', addressCountry: 'AR' },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+  },
+];
+---
+<Base
+  title="Colonia Menonita de Guatraché, La Pampa: historia, costumbres y cómo visitarla"
+  description="La Colonia Menonita Nueva Esperanza está a 35 km de Guatraché, La Pampa. Historia, costumbres, fotos, videos y cómo visitarla sin reserva."
+  jsonLd={jsonLd}
+>
+  <div class="intro">
+    <h1>Colonia Menonita de Guatraché, La Pampa</h1>
+    <p class="lead">
+      La Colonia Menonita Nueva Esperanza está a 35 km de Guatraché, en el sudeste de La Pampa. Unas 3.000 personas
+      viven en 10.000 hectáreas con un modo de vida de hace siglos: no manejan autos y se trasladan en carros tirados
+      por caballos. Se puede visitar todos los días, sin reserva.
+    </p>
+    <figure>
+      <Image src={hero} alt="Niña menonita con sombrero de paja y cinta verde en la Colonia Nueva Esperanza, Guatraché" widths={[400, 720, 1024]} sizes="(max-width: 760px) 100vw, 680px" loading="eager" fetchpriority="high" />
+      <figcaption class="small">Una niña de la colonia con el sombrero de paja típico.</figcaption>
+    </figure>
+  </div>
+
+  <aside class="ficha" aria-labelledby="ficha-t">
+    <h2 id="ficha-t">Datos de la colonia</h2>
+    <dl>
+      <dt>Ubicación</dt><dd>Estancia Remecó, a 35 km de Guatraché (La Pampa)</dd>
+      <dt>Desde Buenos Aires</dt><dd>693 km hasta Guatraché, por RP 1 y RP 24</dd>
+      <dt>Desde Santa Rosa</dt><dd>171 km hasta Guatraché</dd>
+      <dt>Fundación</dt><dd>1985, por familias llegadas de Bolivia y México</dd>
+      <dt>Habitantes</dt><dd>Unas 3.000 personas</dd>
+      <dt>Idioma</dt><dd>Un dialecto entre holandés y alemán</dd>
+      <dt>Visitas</dt><dd>Todos los días, sin reserva. Los domingos no trabajan.</dd>
+    </dl>
+  </aside>
+
+  <section aria-labelledby="visitar">
+    <h2 id="visitar">Cómo visitar la Colonia Menonita</h2>
+    <p>
+      No hace falta avisar ni reservar: las 10.000 hectáreas se recorren libremente. Conviene ir de lunes a sábado y
+      llegar temprano, porque es cuando se puede entrar a las metalúrgicas, carpinterías, queserías y tambos y hablar con
+      las familias. Los domingos no se trabaja ni se recibe gente.
+    </p>
+    <p>
+      Dentro de la colonia no hay hoteles. Lo habitual es dormir en Guatraché y hacer los 35 km en auto o en los taxis
+      que viajan a diario. Algunas familias ofrecen un almuerzo típico en su casa.
+    </p>
+    <p><a href="/como-visitar-la-colonia-menonita/">Cómo llegar, cuándo ir y dónde dormir →</a></p>
+  </section>
+
+  {topics.map((t) => (
+    <section aria-labelledby={t}>
+      <h2 id={t}>{TOPICS[t].heading}</h2>
+      <PostList posts={posts.filter((p) => p.data.topic === t)} />
+    </section>
+  ))}
+
+  <section aria-labelledby="multimedia">
+    <h2 id="multimedia">Fotos y videos</h2>
+    <ul class="guide">
+      <li><a href="/videos/">Videos de la Colonia Menonita</a><span class="small">Documentales e informes de TV: Visión Siete, CQC, TN y el corto “Nueva Esperanza”.</span></li>
+      <li><a href="/fotos/">Fotos de la Colonia Menonita</a><span class="small">Imágenes de la vida diaria en la Colonia Nueva Esperanza.</span></li>
+    </ul>
+  </section>
+
+  <section aria-labelledby="faq">
+    <h2 id="faq">Preguntas frecuentes</h2>
+    <div class="faq">
+      {faq.map((f, i) => (
+        <details open={i === 0}>
+          <summary>{f.q}</summary>
+          <p>{f.a}</p>
+        </details>
+      ))}
+    </div>
+  </section>
+</Base>
