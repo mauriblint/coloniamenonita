@@ -111,4 +111,5 @@ WordPress resolvía un post bajo cualquier categoría (p. ej. `/videos-colonia-m
 - **Online desde 2026-10-11** en Cloudflare Pages (proyecto `coloniamenonita`, repo `mauriblint/coloniamenonita`, build desde `site/` con `NODE_VERSION=22`). Cada push a `main` publica.
 - `www` → `coloniamenonita.com` con una Redirect Rule de Cloudflare (301).
 - Verificado en producción: 22/22 páginas, 91/91 redirects, spam y rutas de WordPress en 404.
-- Falta: confirmar datos del Residencial "La Chacra", pasos de Search Console, limpieza de server-1.
+- WordPress eliminado de server-1 (vhost, webroot, DB y usuario MySQL).
+- Falta: confirmar datos del Residencial "La Chacra" y terminar los pasos de Search Console.
