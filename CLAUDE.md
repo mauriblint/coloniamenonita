@@ -2,6 +2,8 @@
 
 Proyecto para migrar https://coloniamenonita.com/ de WordPress a un sitio **100% estático (HTML)** y eliminar el WordPress.
 
+**Estado: el sitio estático está online desde 2026-10-11** (Astro en `site/`, Cloudflare Pages, push a `main` publica). Ver `MIGRACION.md`. El WordPress de server-1 ya no recibe tráfico pero todavía no se borró.
+
 ## Por qué
 
 - El WordPress estuvo **hackeado** (malware + backdoors desde ~junio 2025). Se limpió el 2026-10-11 (ver "Incidente" abajo), pero el punto de entrada no se identificó, así que puede reinfectarse.

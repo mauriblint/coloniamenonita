@@ -108,4 +108,7 @@ WordPress resolvía un post bajo cualquier categoría (p. ej. `/videos-colonia-m
 - Sitio Astro en `site/` (contenido en `site/src/content/articulos/`, redirects en `site/public/_redirects`). `npm --prefix site run build` genera `site/dist/`.
 - Export de WordPress en `_export/` (`db.json`, `uploads/`, `convert.py` regenera el contenido desde cero).
 - Limpieza hecha al exportar: link de spam en el 421, embeds muertos (Flash, Facebook, video de Howard) y 9 imágenes enlazadas a dominios que ya no existen (estaban rotas en el sitio viejo).
-- Falta: confirmar datos del Residencial "La Chacra", publicar en Cloudflare Pages, cambiar DNS, pasos de "Después de publicar".
+- **Online desde 2026-10-11** en Cloudflare Pages (proyecto `coloniamenonita`, repo `mauriblint/coloniamenonita`, build desde `site/` con `NODE_VERSION=22`). Cada push a `main` publica.
+- `www` → `coloniamenonita.com` con una Redirect Rule de Cloudflare (301).
+- Verificado en producción: 22/22 páginas, 91/91 redirects, spam y rutas de WordPress en 404.
+- Falta: confirmar datos del Residencial "La Chacra", pasos de Search Console, limpieza de server-1.
