@@ -53,6 +53,18 @@ const ld = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
     <meta property="og:image" content={ogUrl} />
     <meta name="twitter:card" content="summary_large_image" />
     {ld.map((d) => <script type="application/ld+json" set:html={JSON.stringify(d)} />)}
+    {import.meta.env.PROD && (
+      <>
+        <!-- Google tag (gtag.js) -->
+        <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-88XE36ZS32"></script>
+        <script is:inline>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-88XE36ZS32');
+        </script>
+      </>
+    )}
   </head>
   <body>
     <a class="skip" href="#contenido">Ir al contenido</a>
